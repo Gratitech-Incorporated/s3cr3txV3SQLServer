@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\pk\Documents\v2</_PublishTargetUrl>
+    <History>True|2023-05-19T03:01:18.4757316Z;True|2023-05-16T22:58:38.6011144-07:00;True|2023-05-15T16:15:38.0832118-07:00;True|2023-05-10T00:53:57.6191578-07:00;True|2023-05-10T00:36:20.2014762-07:00;True|2023-05-09T22:37:17.7543164-07:00;True|2023-05-09T16:47:06.8206512-07:00;True|2023-05-09T16:36:04.1749302-07:00;True|2023-05-09T16:20:55.3574087-07:00;True|2023-05-09T13:29:26.1446155-07:00;True|2023-03-17T11:22:57.8626898-07:00;True|2023-03-17T11:06:36.1242690-07:00;False|2023-03-17T10:57:42.8000545-07:00;True|2023-03-17T10:25:37.8754426-07:00;True|2023-03-17T07:58:38.0493937-07:00;True|2023-03-17T07:57:47.0169126-07:00;True|2023-03-10T19:43:12.1905299-08:00;True|2023-03-10T19:39:38.2983971-08:00;True|2023-03-10T19:06:09.9777995-08:00;True|2023-03-10T18:42:01.6654458-08:00;False|2023-03-10T18:38:51.8154325-08:00;False|2023-03-10T18:36:46.0405201-08:00;False|2023-03-10T18:35:58.8491000-08:00;False|2023-03-10T18:33:02.1537620-08:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="wwwroot/s3cr3txCSharp.png">
+      <publishTime>05/14/2023 08:31:43</publishTime>
+    </File>
+    <File Include="wwwroot/s3cr3txJava.png">
+      <publishTime>05/14/2023 07:12:37</publishTime>
+    </File>
+    <File Include="wwwroot/s3cr3txNodeJS.png">
+      <publishTime>05/17/2023 01:21:38</publishTime>
+    </File>
+    <File Include="wwwroot/s3cr3txPython3.png">
+      <publishTime>05/13/2023 21:15:24</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,456 @@
+-- MariaDB dump 10.19  Distrib 10.11.3-MariaDB, for Linux (x86_64)
+--
+-- Host: localhost    Database: s3cr3tx
+-- ------------------------------------------------------
+-- Server version	10.11.3-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Auth`
+--
+
+DROP TABLE IF EXISTS `Auth`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Auth` (
+  `vID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `vEmail` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `vIsValid` tinyint(4) NOT NULL DEFAULT 0,
+  `CreateDate` datetime(3) NOT NULL DEFAULT utc_timestamp(3),
+  `UpdateDate` datetime(3) NOT NULL DEFAULT utc_timestamp(3),
+  `CreatedBy` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `UpdatedBy` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `AuthCode` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  PRIMARY KEY (`vID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Auth`
+--
+
+LOCK TABLES `Auth` WRITE;
+/*!40000 ALTER TABLE `Auth` DISABLE KEYS */;
+INSERT INTO `Auth` VALUES
+(3,'support@gratitech.com',1,'2023-05-20 02:22:05.417','2023-05-20 02:22:05.417','ADMIN','ADMIN','139349e4-8c55-4301-98a2-0a414f5d9e34'),
+(4,'patrick@gratitech.com',1,'2023-05-20 03:09:10.464','2023-05-20 03:09:10.464','ADMIN','ADMIN','6a7a9dab-b25d-4cad-8928-2c2c7e215021');
+/*!40000 ALTER TABLE `Auth` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `files`
+--
+
+DROP TABLE IF EXISTS `files`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `files` (
+  `fileID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `fileOwnerEmail` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `fileOriginalName` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `fileDirPath` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `fileDbPath` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `fileVirtualPath` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `fileDescription` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `CreateDate` datetime(3) NOT NULL DEFAULT utc_timestamp(3),
+  PRIMARY KEY (`fileID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `files`
+--
+
+LOCK TABLES `files` WRITE;
+/*!40000 ALTER TABLE `files` DISABLE KEYS */;
+/*!40000 ALTER TABLE `files` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forgot`
+--
+
+DROP TABLE IF EXISTS `forgot`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `forgot` (
+  `reset_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `reset_email` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `reset_code` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `reset_start` datetime(3) NOT NULL,
+  `reset_expires` datetime(3) NOT NULL,
+  `req_IP` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `member_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`reset_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `forgot`
+--
+
+LOCK TABLES `forgot` WRITE;
+/*!40000 ALTER TABLE `forgot` DISABLE KEYS */;
+INSERT INTO `forgot` VALUES
+(1,'patrick@gratitech.com','809cda27-eb06-4810-98a2-b3b40cb1a067','2023-05-19 23:20:23.364','2023-05-19 23:40:23.364','::1',1),
+(2,'patrick@gratitech.com','1d632aee-936d-4bcd-a36a-fba490add63e','2023-05-19 23:58:12.749','2023-05-20 00:18:12.749','::1',1),
+(3,'patrick@gratitech.com','b497ede8-0470-4758-9ec0-7ccf34102923','2023-05-20 11:05:51.460','2023-05-20 11:25:51.460','::1',1);
+/*!40000 ALTER TABLE `forgot` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `m`
+--
+
+DROP TABLE IF EXISTS `m`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `m` (
+  `mID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mGuid1` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `mGuid2` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `mEmail` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `mAPIKey` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `mAuthorization` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `mPrivateKey` longtext NOT NULL,
+  `mPublicKey` longtext NOT NULL,
+  `mCreateTime` datetime(3) NOT NULL DEFAULT utc_timestamp(3),
+  `mPmHash` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `mUpdateTime` datetime(3) DEFAULT NULL,
+  PRIMARY KEY (`mID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `m`
+--
+
+LOCK TABLES `m` WRITE;
+/*!40000 ALTER TABLE `m` DISABLE KEYS */;
+INSERT INTO `m` VALUES
+(1,'05d04061-e139-4442-9397-00f3fd115e6d','47d79ee1-7fbb-4c6e-9f3d-e78f7d2161cc','support@gratitech.com','77+977+9dBfvv73vv70iSysv77+977+9RlwN77+9cm3vv73vv73vv70icFLvv73vv70Wf8el77+977+977+9dBjvv71JQ++/ve+/vSEY77+9M2Xvv71Qd++/ve+/ve+/vXNANhXvv71+N3Pvv71uSO+/ve+/vQ==','77+977+9Qu+/ve+/vTjvv73vv71bXzbvv70VDsWS77+977+9TEnvv71mVlHRoe+/vS0SdO+/vQAI77+9Nu+/vSnvv71F77+9Xu+/vSY077+977+9Ne+/vWjvv70/Fm94Ru+/ve+/ve+/vSbvv70/Bg==','PFJTQUtleVZhbHVlPjxNb2R1bHVzPjdzd1NyRmR5QU5pZWhCM3JVdGtGQzBINm1QMEFpZXRNa2JnZ2l2dlQ2aWx5cVZHTi9aMjQvYTY0L2orT1paaEE1d1JmbC83bWc5SWIvbG1QV0Z2TmNCQWVYMXowNDVTSktKWlBub3FBTE8wM3lpMnJaSlFTck41RkxXcTV1VXRWeDdwb1c4WWU1U0VsR3FFaVVNTzBtM0YvUXZhNDZ0bzUrcEVOM3pNMjNXdXB1RXFtME5oeUVSOXg1WXp4cWphbHNSbTVSMEkxVStpM3pGT2RiRHY4Z0hOL2x6NVFGOU9rWGlIdkVyOERGbnByemFmeVZrd3FjMmFGS3VpK0ZZelIrRVM3SFNnOXMrSVdSd0UvMUhiZVdUVTl1dHdXQ2h6VmovRGhIVk96bGZhUE10UzRkYkhZUnloY1lwazNhWW5LcUorT0IvRXcwUnF4dEx1T3dSc0FLUGRNNDNOUGtaSm84QzZGRGlXdUV2Zk4zeXVzemVNSXB4RWRJS2tROU41bGhHSmEwRkNjUjc1aXcyMngrZ29FZDdKQlQ4Y3lzbVZCOHlOTFhYb0hCNzN5Qk1NT0pFUzhpRy9hSFB1Z2swc0dXVlh3L0JndUpXZ3d6SjB4VlJhQmwwclJSZFlTWUdPVkZ3VGRMSXhFcFZuQU90S2R3c09GOXJTRzNuYXBXQlhrNkZ6dEFGOWRzaW9pWG1ZODBrUXdCWWQxYWFVOVBGQndVVlIrUU1uMlhqZ0tZc1dRWHNOcndvendqNzFES0ZCOWpUSndYZjNkUEU0WUlibUo0ZjdPZ0F5R2pOSW55TjdMV3ZvYUk2VVBHVXl5eTI5VWVRY0w3RVJDOUVsMTNpd0VpOVQvRGppNncvVVZlZ0YvY0xOSHk4WDFncklrSGRvUXpscDhGOGRmT21FPTwvTW9kdWx1cz48RXhwb25lbnQ+QVFBQjwvRXhwb25lbnQ+PFA+L04rRGN2ZFVPSEcrQnNYVjdkMXUvTmRhVTUxS091bkpVU2JxU0swZ1pJQlk4YTVZOExQNlNlQWtjbXFmR1A1QkxwY3N4WnlGQmFBYnRxT2FnclZVZVFPT3NNY3oxYmF2VEwyYmNlU1p3aVNYTVUxeEF4YzMyV1VUVkJzZHZhRVNDenJCa25TTHBTSnJ5Q1kyVStxZWdpSFNuNy83OE8rdC9QM1ZsbHBuaEF5d0RiYVBlMFQwN082T1FMTlBMalhhM01TMHJLY05CdE9JOFBPUzRPQXFGSmdMMlR6U09TeEVUcmkvQzV4WFRCbW82a1FLQUFOVndrNU5XQ3lwSjR5MFh5aUlrd08yeXBBeUxMbDRLam5ha0Vmd2h6Y2ZidU1mOWtWUERiY1NvT01BQmVNUE9nTkREKzdvcnh3alkwNjh3TEZySm92SkNYWGk4QjBLeW44MTR3PT08L1A+PFE+OGNBQVMzSk1HMDNvSGVYVXgyZEdESlgzY1JBRTZJZExNNzFaaFZjY3czTW8yQ3NmL1NpUXlBaGExOFR1UVdMYWhyd01mdUdwYUR3cC9ZU3dneHFWNEt6MnZYeldEckVsNWZtNjh4dVJhQzB4aXhkQTNiY0dNTndBL1Y0R0Q1TEl6R2prUEVYdktNRXE3VEdRN28ybnNIeXorQTRkZVAzR1ZndVF0MExzWjlQVU80SENHb0h5VlBhQ1ZBalVNMlB2enRXZEF0NlgzZDgxSitOSFhhdW9BR3QyQmJ6QjFqWGRMTm9OaUNWallXenZzTEpSZUplLzR5QUhoOFhhV0VyWXVjdmxLcHJiOUpwQlFkWHNIV08zZjRFRDByMlJPdDVhbDI5ZktUM0hlRE93N09FU3UyUkRUZGlJQncvckhTSUlLN1JtVW5RZmRrZ0o2aEFlODRlaDZ3PT08L1E+PERQPlRYZDN3SWVPY0lBLzA3bFZzVG9OM3oxbCtZbU5EUUZENEMySXhsenJPSDZ0UU5URmdHL1NkRUZMU1JYcXlYQlNyYUE0WWcxeUh1Z090V1BuV0xXT1BFaGZ0VDVCWGU1S1E3c3VYTFRJZWRaVnp3L0hXRWdMbnZpODlCNGVmVkpUd2NidE9CMm1EaCsrWHlGOXNUV0YrNTI2OVorTjRpQzY3MjhmdUtEWFozZXZrM1BpL3NPQU9QbFg4UEE5aUkyTkQrYmU1cW1DYngzc3JNd2hxZXhpVjg3QWludDhkM0ZkTjdTWEtrcHAzL0ZZY3ZRSEVEdjFVTUpHSllZQkNCR3R6QjBSd2QvNFpwUElHelZ5WDVVN3BNbTFJT2M5Sk81RmcxOTJPV0JsUDQ1ckdtS1Y3cExEUDZWVCtSa29xaXFiM25nN3VDSklvekpQSkhueExWbk5Pdz09PC9EUD48RFE+M05sNXEzTVVZaEZQRHhrcXhLdnRDNHhwVEFuRllpUlBLRXBBSVJkTytLTVkyanF6YzVQK2lDOVJ4akpyTXFLN1hrRW03VGI4aTNRRExFNXU3cVozNjVRM3FTNEZZOUNqL2EraUFYdmEzNkFCMWI1OWpNOHFRYktLMk94dmZ3U3Fta3JzenI5WTJCTjRRczU0UitaekhrRWVMR3ZBc3dxcmlXbnhYK29zakVHeGJsZUJXclFDRFdwUjc3Rk5JbEdXLzQ2WWJNbXJWWThYUVlSWmF4SnBYVkRPdGprVm43ci9mbjBKeGFuYVcyT29xUFNPaHl1aXFqeFZoTXpVUnJyQnVTS3pEYlFCWXprVWlxK0NqK3JMOVJpSXhKcFh0Yjd5WmN2aDFJeFMwTlh3T01iNVZPWW9zbEl4R3JxSklNazVTNnYzbWpYcGxDWUZvS1h2a0swRTF3PT08L0RRPjxJbnZlcnNlUT4xeTNub1ppUVdDNlBYZVRidHBiakU0blNkMnA3MmJqVGdKVXdMY0xZUERHQlhua1o3VTg0K1NtSG91M2l1M2FnVTVLcXZ1NlF4LzdtTmwwdXZaZ094aGh2NlZmYWJvaUlCU0h3WkNwSmlrQlc4dkRnQWpTVFA0L0RGRWlLejliR05JNGRaWitiYm4wNHpMSGxhbmF4dVdyc1FWMGNqTVZLTjg4NFJmRGtmUUk5R1lhblpJblpMU3NzUUZwZzlhTnhsa25ySmpOWGxJSmlnUnNZMDgzNEs4VURad2tySVArV3JyMmdCWDVvUmVVM2FwajRQdkhNTXZYcm51dDBZaUMyZ1RPdFFxdHdJdzlub093cWtPT0FmRExBV09MYnNQdmZLQndjajU4bi9LWHFtSXprN3dVT3dTVHhwWUtZeUxTZXY3TmxBeGFlbUYzdmF4VlVVRmthU2c9PTwvSW52ZXJzZVE+PEQ+UFVnVXdMS2VPSlplczdRRDZKcDEvMm9hdC9reGtyTldUbzBNbU81QWQzYlVqSnczenE2VHcxSjcrZzl3YVNVVi90TXgvdzAwdGY2TkhZeDVTMmtmd3hMMzRHdzRFbEZUazUxamFHSE51L25TbCtsNWN4SEc2eU1OYUxiYlc3QjRIbzM1YXhmZ1pOZkpNRmpLdUNSSkxKMEhWalYveGhGajBLZzZBWjRnaGRrejBHNGorak9acmtnK0QvVklMWERodTUzSTNQOGlOVnJqRkNZZkg2QVRVQm1UMUVueS92SmEyNmRrdFpCY1ovL1p1NGpPbVpQcFR2MHZ6byswL0UzTHNxVmN5WUpDdDIrZFhQSjJvWDB4MlgzZXpoM2Q4QkZ2UXdYRGw2V2IwQy9hbHVaZFFpTDJTR2lVc043MkIva0xENVFHdklZS2k1Y0lwTU4vUXBJOXkwYWdTNC9lZExjcWRhd3FaQ2o4ZVZVTDVTM2FBbnFEbU9Hd1ZBbEk3YnA5N3FtWmc4WDlRNXVWc3ZmVDZEVjR2RW9nQlpuY1hvTjJUZmhYN1V2eXV2RzRGMGU0cCtVeHgxKzRsWE1oVGllYWZ3TlFxOWtqSFBxUDR1RlhyeHBMUDBIbG93eFBZOFV6TEtUN3JEOHdtZml1WHhTNnB4Q3RvVVFJa1hZak5jeGNuUndyZ2JHTko1eEs0ellSQ3BCdWtrTktxZzd1WXdjTXV3U1RsSzdSbEk0R25WKy9zZHhiSGtFWktWVDArS0JhTlBITXAybndUSUI3TnUxZU9hdG1qM212ZFpkdEVQMHo2MGYxdnQ5cG01V253d0VpdUFZczdScTJ6MGUvWVQ3RVdLZzNDOXZKT0dTa2E2RXZrR05RcUZyYjA5VEF0SXB0KzUzVVk2VDFVRE09PC9EPjwvUlNBS2V5VmFsdWU+','PFJTQUtleVZhbHVlPjxNb2R1bHVzPjdzd1NyRmR5QU5pZWhCM3JVdGtGQzBINm1QMEFpZXRNa2JnZ2l2dlQ2aWx5cVZHTi9aMjQvYTY0L2orT1paaEE1d1JmbC83bWc5SWIvbG1QV0Z2TmNCQWVYMXowNDVTSktKWlBub3FBTE8wM3lpMnJaSlFTck41RkxXcTV1VXRWeDdwb1c4WWU1U0VsR3FFaVVNTzBtM0YvUXZhNDZ0bzUrcEVOM3pNMjNXdXB1RXFtME5oeUVSOXg1WXp4cWphbHNSbTVSMEkxVStpM3pGT2RiRHY4Z0hOL2x6NVFGOU9rWGlIdkVyOERGbnByemFmeVZrd3FjMmFGS3VpK0ZZelIrRVM3SFNnOXMrSVdSd0UvMUhiZVdUVTl1dHdXQ2h6VmovRGhIVk96bGZhUE10UzRkYkhZUnloY1lwazNhWW5LcUorT0IvRXcwUnF4dEx1T3dSc0FLUGRNNDNOUGtaSm84QzZGRGlXdUV2Zk4zeXVzemVNSXB4RWRJS2tROU41bGhHSmEwRkNjUjc1aXcyMngrZ29FZDdKQlQ4Y3lzbVZCOHlOTFhYb0hCNzN5Qk1NT0pFUzhpRy9hSFB1Z2swc0dXVlh3L0JndUpXZ3d6SjB4VlJhQmwwclJSZFlTWUdPVkZ3VGRMSXhFcFZuQU90S2R3c09GOXJTRzNuYXBXQlhrNkZ6dEFGOWRzaW9pWG1ZODBrUXdCWWQxYWFVOVBGQndVVlIrUU1uMlhqZ0tZc1dRWHNOcndvendqNzFES0ZCOWpUSndYZjNkUEU0WUlibUo0ZjdPZ0F5R2pOSW55TjdMV3ZvYUk2VVBHVXl5eTI5VWVRY0w3RVJDOUVsMTNpd0VpOVQvRGppNncvVVZlZ0YvY0xOSHk4WDFncklrSGRvUXpscDhGOGRmT21FPTwvTW9kdWx1cz48RXhwb25lbnQ+QVFBQjwvRXhwb25lbnQ+PC9SU0FLZXlWYWx1ZT4=','2023-05-20 02:22:07.728','77+977+9Re+/vVnvv73vv73PmhdV77+9d33vv73vv73vv71zb82zVi7vv71z77+9V++/vTAyHCLvv73vv73vv70jezbvv71/L04E77+92b/vv73vv70U77+977+9Eu+/ve+/vT0RJRgRNSXvv70U','2023-05-20 02:22:07.728'),
+(2,'a325786e-a1f5-4f86-98b2-88434e93d84f','e3a9f689-345a-4494-91ca-55bc3a5e9a5f','patrick@gratitech.com','Cu+/vR3vv71zbUdj77+97YyV77+9X++/ve+/vQ0a77+9G++/vSjvv73vv73vv70s77+9BO+/vXvvv70L77+977+977+977+9GC7vv70Q77+977+9Ku+/vXIP77+9He+/ve+/ve+/vX0jfhdqKe+/vQrvv70=','fe+/vQTvv71x77+9BywkV++/ve+/vTDfodmwdsqyKu+/vXBj77+9MB4FdFkv77+9K++/vXJ177+9x7xkRyTvv70kNErvv73vv71tVTRJ77+9Ij7vv70xAHIleidr','PFJTQUtleVZhbHVlPjxNb2R1bHVzPnJQOHZ4M08rcDJMT0hVb3c4dk5IdS9sakJjVUFBa0tzeHhmaHBiYUlBZVZEUC83VUNVUWJiU2VwY2ZqbTNEeWQvNDJpaHlRRWJxa2I1Qis2MUtWUi9POUorcE44b0l2UDJ3d0dtT1pTL01WMjl6VEJORjFhSjhaajFoLzUxWHA1Y2NvTTl6emlWYTV2dWlZRzc5LzI0eTBnRnBHNTVncUk4OVA1QmRZRFJSdjgvaHNXa09iQjVmd1U5aXp5UHlCa1QwWmg0N3BUT21tT3hwdzNJTFhldEI0MWkwa1h0Zm4vVHh0SXY1S0VGaC9NKzBsTEJYb3ZPY1B3QXFUZ3J6Ym4yWU9lZDdqak1wY1ZuOHJGV0YxZEFpU2ZMTjAvU2ZFaDdxd3VjWXZlZE42NzNuYUlxRWxFZWliV0IwM0NwNUZoWkk2QTU5M2l1aXRsajFKeTYvSjFWV0Uzbi9JL29ZRFRHUVEvYlhLandOTWhtbmJ4b3Z2ZmU4dHVLNllCcFVBUEo3STY1bVZsYmNoMVNyS0FweVhPNDNuQnQrZk56aU9iV3V2dkVkN25XTStCOFBwYUh2YnVkL3VGcGdKNE8xeHFLYVVzbGNKbXh5QXBJbDFVTWdoUlBhdldST29ZNUt6M3RzR0tjTGlpUnlVdTFuZ2lYdStwejZlYjBISGMrTGgzbGxXTmY1OHRsZDZFSjB2eDN4RDBXUkd6V3dsZEpvQ1RZS0tjeER4YmQ4SHgvZmIzVG5LdnlwSTEwT0ZPa0Q0ZmRuZHp4UmtpRktoRElHbFdQL2ZScGJsbjhHTmhyQnNHYlBRRVZYNjJiVkpkSjRaQ291RGRWWFlPVjVHZDJwUGI1WmRWQnJPNDVoMzRZRzBWL2tiVGJUZmJoQkJUYWR3MGxGYkZybHVpVUlrPTwvTW9kdWx1cz48RXhwb25lbnQ+QVFBQjwvRXhwb25lbnQ+PFA+Mms1UzdUT003UXdmRzlQb3pPRDVUR3ozM3BzdlU0djIrUmFFcFZsY1l4ZVJTUkJLekZCTVN0YnZKRHFkQWQ2YmRqTThxMG9Mb05tcTVOMXRQWENVQm0velFUUCtaaEdXNTQ3MCtTQno4UGFnRng0V3QzLzhsM3BVbWRna0RQaUM0Rm9DZk5KQ1crSCtkblBNTmdhcHFjc2tKdTJKNVpaYTYxWm5WQlpZN1NaZ0FBVlEvVDdGbUVTY284YXRyUjRZUDZOU1lybVpYaXhoYVhoK0pGVTZxMHlvS3JGZ2FmaEZkL1g4N3dKZW81dGVHY1ZINWtsY2NBdkVId2syY2pkTHp5NUtYMjNFSXVTMnNZdnYrMGlHZ2xZcW9UdVFiS2w5M3hqWlVRYVl5VktQRVJnTldmWGhYK2x4dHdJSEpYTmYzMnN6RHlMSkZQYUlFVzFudllpMnRRPT08L1A+PFE+eXQ0Vm1ycjdpV1Y3d1BLUGJhejg0WFdGY0V2dkl3WU5hT3g3RkZSSzNRd3JNK2wvOTAxV1laaW5YdTBvYUJiNGY4MDdtVzlDN25DdUhVNDNsY3I0czlRZE8xRkg1R3pQWU5EVHViVkhEcnZTRlNNaEU4N2RnUzJ5S29mU2NDRmtMRlJqdVp6Wkg0OU16ZFVsOEV1bk9KNnJ5bFhKVktEbjJzYWtxUVlTbjZWa0R5V2RrYnVVQm5xTU5veGw0aUNkQnJ5QjV4MXVONXFLanNpeU9xZ3hnTW1JZTVUNGU0MFE5dnZidkQ3OUhVZjIrMStDYzdBR0N0L0M2NXBEa2V5SXA0cktPU3FpbUE1WFNoallwcW9FWmF2VFAzUGIxTFN0emtVWSswN3dnSTlIN2ZHdDUrbTJ4SEg3LzZ1TVJIRGNENk9FN2xuclk5emIya2V0WEl3akJRPT08L1E+PERQPkhUTW95RzJDeGhvKzl2dnJRYXc5N0VrUEJvbC9WUTk5bzJldHFtZy9nVW1mdDBRa25SdUllT0l5N29lZ2hLVi82ZG1FbmV5empYcFA3M2ptcWJjck5ZazM0bHJRQmxzSDhrVWU0MHZCOWxNbXFyRHRuUEhUbVhkVlpaYVJpK0tacnVTYlBKTHJLVnNiTEVEazZiME9hSld4YWp1UG5GUDJLVkJQVmVIL1Z3a3hBZyt6KzR1djVtUVhCNWtGbGdoV2VmeWdnbkFNNFpuU0ZjZDJKK24yaFA4bDV6LytnMjRmN0tITWlUT3A4UHhSSStWTmJySVZXUzladGtVSE1WUFFJaEF4Qm42cUkzaXdMeU5tb0JmZFZnV3NnaEJ6aXZWSXp0U0dETjV6QlVxenREZWhZWTBQN2tKTllZczE1WDUvTG1VcVdUWHY2NHZtTzE2RTU4Y25tUT09PC9EUD48RFE+QlpKajlZUDlOS0RjN1VlOE9MN3ZreUd2TUk1bFd3am5oV0k1WHkyUmdOQzh2d2hDdzRBVVIwbnlEdUZrb3JjK3pBUFBCei9QRHMxNWVzU1RNa0lJNHFlSXhnQk5nVENiNFlUYXk5YjJ4S2pUOUZDcXIraVduTjJzYnc2YjhRaDV2OTN4ZnorWGx3NVFoYmE4L0FTWDZ5NHdlYll4ZVdtUjlLaFFEWFJsUG8xRVdrWW1OY0o1SmxSblZYZzF0Q2hCSjlZMW15dHJ3NHN6RXdqZ0hFeFNUNzg1U0d1bkIzMndZWmc1U01wU0dXUEluTTdhdm1LdlI4MHRoVnNQVUFxM0ZpTHh1dkE0MXdSTjBYTXRRQ2FiU0UrWDFiNVE0MTZ6QjE5T2VGaUtzbjA4OUlRV3lxL1luVHlrTnpsMitNcEF3UTAwc1hjMng5OWhDblc5aFRVMElRPT08L0RRPjxJbnZlcnNlUT5yOW5SZk1Lc21ubnNqc3dPUkZMVkZUckRBTmgxZmpWTUt4dWZLeWpHdGRkZG5qdnNTUHg3aEhZUDhhRzcrYkxWbUdndEVFZWYwemNYQnZKdDljOWY1ZWM3ZWJYM0VKa2tyMnRWM0Zjc3R3cEVoUGUxcmF4Nytnbm12cXhXWHZMTmRvZ1V0aXhvUW5nYUx6SjRreGxWQ3RxRHlZM1R5WGd1VDhLRXdTWExnTjVZS3daSUpNSlZvK0k1aUhQMVlxQ1AvOTVlWUhIK2hLbko0MjlYRGViQjdPcEVRU2xsNXZQME1YaWZTdGxDLzlXakt0ZTE4VEFuOE9BLzEwVjE2VnBPczVQRVFHZlh5QmlZR1VmNFk2Vi9FRWorZ0pmcWsrd2F2UFA5WkZxV2ozNkV2aHkyNXdFS2E0ZmpOaEhFbTNVTkF1QXZEWTRma0xxUE1kcEtmeVBVSlE9PTwvSW52ZXJzZVE+PEQ+QnAvaU03Tnp3bG55UDJ0SXI4VDhWanYvVmU3UzRoQVRqMGo2QnhKNlRnVVQzdnQ3N2xWT0lTaTYyZlp1MmxIQmhMaUFpeTNiZ01ycW1vRHNqRE0rMnVTeUZpQytHcGZBQUVqeG11NFc5M0l1dWFjUkc3M1VNNU5SUkRFRzMxTjd0S2I4RTFJSElsd0MzTjBzdUc0QXVLcFE1M0srdVQzL29pblgxUFZoQ1JPbTVVUWlycTZhcVdmb0x5NjBvYXNCZVNSNEJsclIwRWJQVWFPdWp5U0JXZUxFcUlmNW10MklzSDRBay9WdDlLRlV0MVJHWHl0U250WVBrR1AwdWRxRi9sUHN2L1FhSHlVRko4TzAwdVNnVy9JLzNKQy9qSHJweGJyRHlWTzVCcVYzUGRaa0toUDNYMUxsWkExb3BHb0w5K2d6ZVJQeUdFb2w3dzVGTTRWcTdZM3VxWi9IMEFnUUloSXNGVEZ1TjJVa2laSVdLRGdvOW5RTHgxN09MdnNCMU5Va2JSNTBDUEpGd25GcWdlY3daeUpLRTFuRUpNZ2grNWY0MFduRS8vcloydStwemhpc1ZTZVVwNXdWM0NMai9JSFE0WVJGa2tiYlNnRGFPV1BrS2N3ek9kbU1OaFcyblo4ZGVpS0UrOEh4TVlYOWI4RlltTTRUV2oyN0dFWnJDZmZwbi9MWlEycjNVcGNGcE4xYmZuc0FXamZNNmpQRktJanRnTkdpRXJSTXh6OG0rc3o5M1pZL1UwUlJ6cnNtaitwT055UGkwS2w2TzZyZkVuY1RKbnFvQmVkdFBBN2NMd2s0bVJIa3QveDExZ1RWSWxHSzJRMzNJQkFMSDB0ZEcvbjNZY0hQNnRvVTc3TTBkNXk1YjA5T1c0dk5JZEE5TjdmVkRVbFdJa0U9PC9EPjwvUlNBS2V5VmFsdWU+','PFJTQUtleVZhbHVlPjxNb2R1bHVzPnJQOHZ4M08rcDJMT0hVb3c4dk5IdS9sakJjVUFBa0tzeHhmaHBiYUlBZVZEUC83VUNVUWJiU2VwY2ZqbTNEeWQvNDJpaHlRRWJxa2I1Qis2MUtWUi9POUorcE44b0l2UDJ3d0dtT1pTL01WMjl6VEJORjFhSjhaajFoLzUxWHA1Y2NvTTl6emlWYTV2dWlZRzc5LzI0eTBnRnBHNTVncUk4OVA1QmRZRFJSdjgvaHNXa09iQjVmd1U5aXp5UHlCa1QwWmg0N3BUT21tT3hwdzNJTFhldEI0MWkwa1h0Zm4vVHh0SXY1S0VGaC9NKzBsTEJYb3ZPY1B3QXFUZ3J6Ym4yWU9lZDdqak1wY1ZuOHJGV0YxZEFpU2ZMTjAvU2ZFaDdxd3VjWXZlZE42NzNuYUlxRWxFZWliV0IwM0NwNUZoWkk2QTU5M2l1aXRsajFKeTYvSjFWV0Uzbi9JL29ZRFRHUVEvYlhLandOTWhtbmJ4b3Z2ZmU4dHVLNllCcFVBUEo3STY1bVZsYmNoMVNyS0FweVhPNDNuQnQrZk56aU9iV3V2dkVkN25XTStCOFBwYUh2YnVkL3VGcGdKNE8xeHFLYVVzbGNKbXh5QXBJbDFVTWdoUlBhdldST29ZNUt6M3RzR0tjTGlpUnlVdTFuZ2lYdStwejZlYjBISGMrTGgzbGxXTmY1OHRsZDZFSjB2eDN4RDBXUkd6V3dsZEpvQ1RZS0tjeER4YmQ4SHgvZmIzVG5LdnlwSTEwT0ZPa0Q0ZmRuZHp4UmtpRktoRElHbFdQL2ZScGJsbjhHTmhyQnNHYlBRRVZYNjJiVkpkSjRaQ291RGRWWFlPVjVHZDJwUGI1WmRWQnJPNDVoMzRZRzBWL2tiVGJUZmJoQkJUYWR3MGxGYkZybHVpVUlrPTwvTW9kdWx1cz48RXhwb25lbnQ+QVFBQjwvRXhwb25lbnQ+PC9SU0FLZXlWYWx1ZT4=','2023-05-20 03:09:10.707','Ie+/ve+/ve+/vRcM77+9aA7vv73vv73vv70rUjUw77+9PXdZX++/vR93GHBNLO+2rTNx77+9Ze+/vTM3CnXvv70uHe+/vXvvv70xQMi577+977+977+977+9d++/ve+/vT4ICmU=','2023-05-20 03:09:10.707');
+/*!40000 ALTER TABLE `m` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `member_archive`
+--
+
+DROP TABLE IF EXISTS `member_archive`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `member_archive` (
+  `member_archive_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `member_id` bigint(20) NOT NULL,
+  `member_code` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `current_code` tinyint(4) NOT NULL,
+  `create_date` datetime(3) NOT NULL,
+  `update_date` datetime(3) NOT NULL,
+  PRIMARY KEY (`member_archive_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `member_archive`
+--
+
+LOCK TABLES `member_archive` WRITE;
+/*!40000 ALTER TABLE `member_archive` DISABLE KEYS */;
+/*!40000 ALTER TABLE `member_archive` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `member_sessions`
+--
+
+DROP TABLE IF EXISTS `member_sessions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `member_sessions` (
+  `session_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `member_id` bigint(20) NOT NULL,
+  `member_email` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `member_token` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `member_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `session_start` datetime(3) NOT NULL,
+  `session_active` tinyint(4) NOT NULL,
+  `session_last_active` datetime(3) NOT NULL,
+  `session_end` datetime(3) NOT NULL,
+  `member_ip` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `member_sessions`
+--
+
+LOCK TABLES `member_sessions` WRITE;
+/*!40000 ALTER TABLE `member_sessions` DISABLE KEYS */;
+INSERT INTO `member_sessions` VALUES
+(1,1,'patrick@gratitech.com','7e341797-1454-46d9-a169-bd6c1d6c0a0c','Patrick Kelly','2023-05-19 22:47:19.320',1,'2023-05-19 22:47:19.320','2023-05-19 23:07:19.320','::1'),
+(2,1,'patrick@gratitech.com','1ba6deb6-7299-40bb-8226-fd4a9cf6a7c9','Patrick Kelly','2023-05-19 23:11:38.734',1,'2023-05-19 23:11:38.734','2023-05-19 23:31:38.734','::1'),
+(3,1,'patrick@gratitech.com','77c8140b-8659-4168-88b6-9f879bd95416','Patrick Kelly','2023-05-19 23:12:22.870',1,'2023-05-19 23:12:22.870','2023-05-19 23:32:22.870','::1'),
+(4,1,'patrick@gratitech.com','6efa136f-5946-4594-97aa-0e9e040ab33a','Patrick Kelly','2023-05-19 23:21:24.789',1,'2023-05-19 23:21:24.789','2023-05-19 23:41:24.789','::1'),
+(5,1,'patrick@gratitech.com','810cde76-db10-43e0-adf9-4fab8ee49151','Patrick Kelly','2023-05-19 23:49:52.807',1,'2023-05-19 23:49:52.807','2023-05-20 00:09:52.807','::1'),
+(6,1,'patrick@gratitech.com','406eb4f1-8646-4bbe-b0d2-4f4be3b84b0d','Patrick Kelly','2023-05-19 23:50:19.141',1,'2023-05-19 23:50:19.141','2023-05-20 00:10:19.141','::1'),
+(7,1,'patrick@gratitech.com','3db2ec32-df16-415c-bb90-0740d5bdc539','Patrick Kelly','2023-05-19 23:59:05.807',1,'2023-05-19 23:59:05.807','2023-05-20 00:19:05.807','::1'),
+(8,1,'patrick@gratitech.com','50287f97-800b-4534-981e-36d87d3be661','Patrick Kelly','2023-05-20 00:06:19.965',1,'2023-05-20 00:06:19.965','2023-05-20 00:26:19.965','::1'),
+(9,1,'patrick@gratitech.com','ed8d3e87-1db1-41e1-876b-fcadbc56a98b','Patrick Kelly','2023-05-20 00:10:15.497',1,'2023-05-20 00:10:15.497','2023-05-20 00:30:15.497','::1'),
+(10,1,'patrick@gratitech.com','a19a9ee6-c554-4962-8f25-fa4fafc2857e','Patrick Kelly','2023-05-20 00:16:30.943',1,'2023-05-20 00:16:30.943','2023-05-20 00:36:30.943','::1'),
+(11,1,'patrick@gratitech.com','ca248254-dd58-4bfb-9cff-1e287dfc5ec4','Patrick Kelly','2023-05-20 00:18:06.684',1,'2023-05-20 00:18:06.684','2023-05-20 00:38:06.684','::1'),
+(12,1,'patrick@gratitech.com','a447029c-48b4-477a-92d4-2f453cc48d09','Patrick Kelly','2023-05-20 00:18:24.395',1,'2023-05-20 00:18:24.395','2023-05-20 00:38:24.395','::1'),
+(13,1,'patrick@gratitech.com','c8d66146-8fc8-4295-b87f-7cb6d4b9ac0c','Patrick Kelly','2023-05-20 11:06:39.409',1,'2023-05-20 11:06:39.409','2023-05-20 11:26:39.409','::1'),
+(14,1,'patrick@gratitech.com','a75294b9-b070-49fd-bdb5-26b456708cdb','Patrick Kelly','2023-05-20 11:16:16.918',1,'2023-05-20 11:16:16.918','2023-05-20 11:36:16.918','::1'),
+(15,1,'patrick@gratitech.com','1173766b-7232-4f2e-a7fc-291b11b4080c','Patrick Kelly','2023-05-20 11:23:31.417',1,'2023-05-20 11:23:32.500','2023-05-20 11:43:33.670','::1'),
+(16,1,'patrick@gratitech.com','0f7e0295-dbeb-4feb-acb4-5ebd9f224f4d','Patrick Kelly','2023-05-20 11:30:13.670',1,'2023-05-20 11:30:13.670','2023-05-20 11:50:13.670','::1'),
+(17,1,'patrick@gratitech.com','f930e24f-af9a-4f58-bb0a-f454b34c5b71','Patrick Kelly','2023-05-20 11:34:48.252',1,'2023-05-20 11:34:48.252','2023-05-20 11:54:48.252','::1'),
+(18,1,'patrick@gratitech.com','b0bf11f1-7e69-42bb-b4ee-9cb386a9f5c6','Patrick Kelly','2023-05-20 11:37:33.274',1,'2023-05-20 11:37:33.274','2023-05-20 11:57:33.274','::1'),
+(19,1,'patrick@gratitech.com','3fcef600-07eb-42a6-8599-52c6846b3342','Patrick Kelly','2023-05-20 11:40:11.189',1,'2023-05-20 11:40:11.189','2023-05-20 12:00:11.189','::1'),
+(20,1,'patrick@gratitech.com','7ed7c59e-1cb3-4120-ba26-8a596f66c8ff','Patrick Kelly','2023-05-20 11:42:05.667',1,'2023-05-20 11:42:05.667','2023-05-20 12:02:05.667','::1'),
+(21,1,'patrick@gratitech.com','194e7680-ed77-45fa-9a52-eceb93602fab','Patrick Kelly','2023-05-20 11:48:28.901',1,'2023-05-20 11:48:28.901','2023-05-20 12:08:28.901','::1'),
+(22,1,'patrick@gratitech.com','fc24cda7-3ecc-40c1-8839-2b33dade2933','Patrick Kelly','2023-05-20 11:49:18.254',1,'2023-05-20 11:49:18.254','2023-05-20 12:09:18.254','::1'),
+(23,1,'patrick@gratitech.com','bbba8c7b-568c-4a15-8fd6-8e8251da59fa','Patrick Kelly','2023-05-20 11:53:03.131',1,'2023-05-20 11:53:03.131','2023-05-20 12:13:03.131','::1'),
+(24,1,'patrick@gratitech.com','56c4424b-3ef2-42e5-9059-4a9b27a456b8','Patrick Kelly','2023-05-20 14:31:48.947',1,'2023-05-20 14:31:48.947','2023-05-20 14:51:48.947','::1'),
+(25,1,'patrick@gratitech.com','ccfac0f5-2783-4bf9-b03c-b53974ded9ac','Patrick Kelly','2023-05-20 14:44:07.635',1,'2023-05-20 14:44:07.635','2023-05-20 15:04:07.635','::1'),
+(26,1,'patrick@gratitech.com','9b9a4cf8-63c4-42ba-b814-0b02e0f02cf7','Patrick Kelly','2023-05-20 15:12:06.222',1,'2023-05-20 15:12:06.222','2023-05-20 15:32:06.222','::1'),
+(27,1,'patrick@gratitech.com','fd5a5447-990e-44fc-bee4-9bc80da1b589','Patrick Kelly','2023-05-20 15:33:12.397',1,'2023-05-20 15:33:12.397','2023-05-20 15:53:12.397','::1'),
+(28,1,'patrick@gratitech.com','3fd0689f-8e5a-46c7-818c-3b857fe52d35','Patrick Kelly','2023-05-20 15:56:29.391',1,'2023-05-20 15:56:29.391','2023-05-20 16:16:29.391','::1'),
+(29,1,'patrick@gratitech.com','5fbaa207-b36b-40e5-bd62-4c6f33d68ad4','Patrick Kelly','2023-05-20 17:01:45.957',1,'2023-05-20 17:01:45.957','2023-05-20 17:21:45.957','::1'),
+(30,1,'patrick@gratitech.com','9511711b-3bab-4447-8f21-676c1afd10a0','Patrick Kelly','2023-05-20 17:24:11.598',1,'2023-05-20 17:24:11.598','2023-05-20 17:44:11.598','::1'),
+(31,1,'patrick@gratitech.com','581bc19f-602e-4dee-a922-d3fe64e502c3','Patrick Kelly','2023-05-20 17:46:30.674',1,'2023-05-20 17:46:30.674','2023-05-20 18:06:30.674','::1'),
+(32,1,'patrick@gratitech.com','703465ba-8f1e-4623-813f-51f16de66b36','Patrick Kelly','2023-05-20 21:12:20.754',1,'2023-05-20 21:12:20.754','2023-05-20 21:32:20.754','::1');
+/*!40000 ALTER TABLE `member_sessions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `members`
+--
+
+DROP TABLE IF EXISTS `members`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `members` (
+  `member_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `member_email` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `member_code` longtext NOT NULL,
+  `member_first_name` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `member_last_name` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `member_reg_number` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `member_create_date` datetime(3) NOT NULL,
+  `member_update_date` datetime(3) NOT NULL,
+  `member_enabled` tinyint(4) NOT NULL DEFAULT 0,
+  `member_confirmed` tinyint(4) NOT NULL DEFAULT 0,
+  `member_country` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `member_state` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `member_gender` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `member_mobile_phone` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `member_mobile_carrier` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `member_city` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `member_zip` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `member_address` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `member_address2` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `member_order_number` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '0',
+  PRIMARY KEY (`member_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `members`
+--
+
+LOCK TABLES `members` WRITE;
+/*!40000 ALTER TABLE `members` DISABLE KEYS */;
+INSERT INTO `members` VALUES
+(1,'patrick@gratitech.com','bNu17b+k1db+s1vtyFXxDw75Xms8iyveaOmvwvZAdIcjx54N8velQoob+eGFYxxW1Y3SiZBGj68n1eY7iJAmwGFDppdZocRwPKwSaj6gDzTru46bp3uNFv04ec7hn6nBdCJ8gagPvKurt9J+7u0no6z3pkVdNbf9z6ol3DJ6ryIYVmF6A5xJeKXwTW8vu1gPjONHHD+kbgFUfdLqZkPYEnGDNtVE2WBMuhT3saDVQRRBpmaOx70RC226dVlhdS7ThbVP/uWeKHtpjm3NgjYoz2jBJ6d/EzNMqapwlzudgDVNp263xSo8Rtl0NhlrOZEcKahn/0/2BItD2M/0JKmoEIYAAC2qpc5RzZIR4KLKYXH7Nh9KfDUF0E0fBJy8mMC7mla60kM8SXomXud61n2Gdn+8nBAPZDUwWfT86R6bv1iydx2jfMYYBwZWjuUW9owS8BeqbWJiysDhnM1PWwEoLBSuQyKmUJW6xVdsPwUuAgdRbFz8vA1sM2nLp4MU7ak7yy4FEe9tApBKLGxYl6vqM3QKlVma0HlfvVZxLlqh0VBtCxfYcrIyOO804TjoseD73uz/W92oKzwt0N2ycsL8ovltTD/H0DwA+dQWvk5CR8gDAsc3OMrFhQcclXM+Qkh4Q8fu8O1PhABS//iLGR1FLoAdpVbXdZTTM/la7M/2koE=','Patrick','Kelly','468de5c1-4428-442f-9be4-63e98b915fc1','2023-05-19 22:08:52.680','2023-05-19 22:08:52.680',1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0');
+/*!40000 ALTER TABLE `members` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `msg`
+--
+
+DROP TABLE IF EXISTS `msg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `msg` (
+  `msg_ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `msg_from` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `msg_to` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `msg_text` longtext DEFAULT NULL,
+  `msg_attachments` tinyint(4) DEFAULT 0,
+  `msg_sent` datetime(3) DEFAULT NULL,
+  `msg_delivered` datetime(3) NOT NULL,
+  `msg_received` datetime(3) NOT NULL,
+  `msg_deleted` tinyint(4) DEFAULT 0,
+  `msg_DeletedTime` datetime(3) DEFAULT NULL,
+  PRIMARY KEY (`msg_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `msg`
+--
+
+LOCK TABLES `msg` WRITE;
+/*!40000 ALTER TABLE `msg` DISABLE KEYS */;
+/*!40000 ALTER TABLE `msg` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `msg_attachments`
+--
+
+DROP TABLE IF EXISTS `msg_attachments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `msg_attachments` (
+  `fileID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `msg_id` bigint(20) NOT NULL,
+  `fileOwnerEmail` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `fileOriginalName` varchar(256) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `fileDirPath` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `fileDbPath` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `fileVirtualPath` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `fileDescription` varchar(512) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `CreateDate` datetime(3) NOT NULL DEFAULT utc_timestamp(3),
+  `isDeleted` tinyint(4) NOT NULL DEFAULT 0,
+  `DeletedDate` datetime(3) DEFAULT NULL,
+  PRIMARY KEY (`fileID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `msg_attachments`
+--
+
+LOCK TABLES `msg_attachments` WRITE;
+/*!40000 ALTER TABLE `msg_attachments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `msg_attachments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tblLog`
+--
+
+DROP TABLE IF EXISTS `tblLog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tblLog` (
+  `LogID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `LogSource` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `LogMessage` longtext NOT NULL,
+  `LogCreateDate` datetime(3) NOT NULL DEFAULT utc_timestamp(3),
+  PRIMARY KEY (`LogID`)
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tblLog`
+--
+
+LOCK TABLES `tblLog` WRITE;
+/*!40000 ALTER TABLE `tblLog` DISABLE KEYS */;
+INSERT INTO `tblLog` VALUES
+(1,'s3cr3tx_StoreBundle','SqlConnector.SqlException (0x80004005): Data too long for column \'p_PmHash\' at row 0\n   at SqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/SqlConnector/Core/ResultSet.cs:line 43\n   at SqlConnector.SqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/SqlConnector/SqlDataReader.cs:line 130\n   at SqlConnector.SqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, ISqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlDataReader.cs:line 468\n   at SqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/Core/CommandExecutor.cs:line 56\n   at SqlConnector.SqlCommand.ExecuteNonQueryAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlCommand.cs:line 296\n   at SqlConnector.SqlCommand.ExecuteNonQuery() in /_/src/SqlConnector/SqlCommand.cs:line 107\n   at s3cr3tx.Controllers.Bundle.storeBundle(Bundle bundleCurrent) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Controllers/ValuesController.cs:line 574','2023-05-20 02:09:56.234'),
+(2,'support@gratitech.com','KeyGenFailure','2023-05-20 02:09:56.244'),
+(3,'s3cr3tx_StoreBundle','SqlConnector.SqlException (0x80004005): Subquery returns more than 1 row\n   at SqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/SqlConnector/Core/ResultSet.cs:line 43\n   at SqlConnector.SqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/SqlConnector/SqlDataReader.cs:line 130\n   at SqlConnector.SqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, ISqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlDataReader.cs:line 468\n   at SqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/Core/CommandExecutor.cs:line 56\n   at SqlConnector.SqlCommand.ExecuteNonQueryAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlCommand.cs:line 296\n   at SqlConnector.SqlCommand.ExecuteNonQuery() in /_/src/SqlConnector/SqlCommand.cs:line 107\n   at s3cr3tx.Controllers.Bundle.storeBundle(Bundle bundleCurrent) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Controllers/ValuesController.cs:line 574','2023-05-20 02:20:11.179'),
+(4,'support@gratitech.com','KeyGenFailure','2023-05-20 02:20:11.193'),
+(5,'support@gratitech.com','KeyGenSuccess','2023-05-20 02:22:07.738'),
+(6,'support@gratitech.com','True','2023-05-20 02:24:18.206'),
+(7,'EncDec_Sproc','System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.\n   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)\n   at System.Convert.FromBase64String(String s)\n   at s3cr3tx.Controllers.uspEncDec.EncDec(String email, String input, Boolean EorD, Boolean blnDefault, String& strText) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Controllers/ValuesController.cs:line 965','2023-05-20 02:24:43.057'),
+(8,'support@gratitech.com','False','2023-05-20 02:24:43.061'),
+(9,'EncDec_Sproc','System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.\n   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)\n   at System.Convert.FromBase64String(String s)\n   at s3cr3tx.Controllers.uspEncDec.EncDec(String email, String input, Boolean EorD, Boolean blnDefault, String& strText) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Controllers/ValuesController.cs:line 965','2023-05-20 02:25:28.261'),
+(10,'support@gratitech.com','False','2023-05-20 02:25:28.271'),
+(11,'support@gratitech.com','True','2023-05-20 02:27:41.822'),
+(12,'support@gratitech.com','False','2023-05-20 02:28:09.166'),
+(13,'support@gratitech.com','True','2023-05-20 02:41:42.132'),
+(14,'support@gratitech.com','True','2023-05-20 02:43:09.681'),
+(15,'support@gratitech.com','True','2023-05-20 02:45:01.446'),
+(16,'s3cr3tx.api.RegisterPageCS.OnPostView','System.ArgumentException: Parameter \'p_ID\' not found in the collection.\n   at SqlConnector.Core.CachedProcedure.AlignParamsWithDb(SqlParameterCollection parameterCollection) in /_/src/SqlConnector/Core/CachedProcedure.cs:line 124\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteStoredProcedure(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 188\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryPayload(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 75\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryCommand(CommandListPosition& commandListPosition, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 47\n   at SqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/Core/CommandExecutor.cs:line 45\n   at SqlConnector.SqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlCommand.cs:line 316\n   at SqlConnector.SqlCommand.ExecuteScalar() in /_/src/SqlConnector/SqlCommand.cs:line 110\n   at s3cr3tx.Pages.RegisterModel.OnPostView(Member member) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/register.cshtml.cs:line 176','2023-05-20 02:48:26.086'),
+(17,'s3cr3tx.api.RegisterPageCS.OnPostView','System.ArgumentException: Parameter \'p_ID\' not found in the collection.\n   at SqlConnector.Core.CachedProcedure.AlignParamsWithDb(SqlParameterCollection parameterCollection) in /_/src/SqlConnector/Core/CachedProcedure.cs:line 124\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteStoredProcedure(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 188\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryPayload(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 75\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryCommand(CommandListPosition& commandListPosition, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 47\n   at SqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/Core/CommandExecutor.cs:line 45\n   at SqlConnector.SqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlCommand.cs:line 316\n   at SqlConnector.SqlCommand.ExecuteScalar() in /_/src/SqlConnector/SqlCommand.cs:line 110\n   at s3cr3tx.Pages.RegisterModel.OnPostView(Member member) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/register.cshtml.cs:line 176','2023-05-20 02:49:01.247'),
+(18,'s3cr3tx.api.RegisterPageCS.OnPostView','System.ArgumentException: Parameter \'p_ID\' not found in the collection.\n   at SqlConnector.Core.CachedProcedure.AlignParamsWithDb(SqlParameterCollection parameterCollection) in /_/src/SqlConnector/Core/CachedProcedure.cs:line 124\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteStoredProcedure(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 188\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryPayload(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 75\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryCommand(CommandListPosition& commandListPosition, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 47\n   at SqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/Core/CommandExecutor.cs:line 45\n   at SqlConnector.SqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlCommand.cs:line 316\n   at SqlConnector.SqlCommand.ExecuteScalar() in /_/src/SqlConnector/SqlCommand.cs:line 110\n   at s3cr3tx.Pages.RegisterModel.OnPostView(Member member) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/register.cshtml.cs:line 176','2023-05-20 03:06:47.632'),
+(19,'support@gratitech.com','False','2023-05-20 03:08:52.858'),
+(20,'support@gratitech.com','False','2023-05-20 03:08:52.887'),
+(21,'support@gratitech.com','False','2023-05-20 03:08:52.907'),
+(22,'patrick@gratitech.com','KeyGenSuccess','2023-05-20 03:09:10.718'),
+(23,'s3cr3tx.api.RegisterPageCS.OnGet','System.InvalidCastException: Unable to cast object of type \'System.SByte\' to type \'System.Boolean\'.\n   at s3cr3tx.Pages.LoginModel.OnPostView(Login loginC) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/login.cshtml.cs:line 126','2023-05-20 03:09:35.051'),
+(24,'s3cr3tx.api.RegisterPageCS.OnGet','System.InvalidCastException: Unable to cast object of type \'System.SByte\' to type \'System.Boolean\'.\n   at s3cr3tx.Pages.LoginModel.OnPostView(Login loginC) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/login.cshtml.cs:line 126','2023-05-20 03:09:54.832'),
+(25,'s3cr3tx.api.RegisterPageCS.OnGet','System.ArgumentException: Parameter \'p_ID\' not found in the collection.\n   at SqlConnector.Core.CachedProcedure.AlignParamsWithDb(SqlParameterCollection parameterCollection) in /_/src/SqlConnector/Core/CachedProcedure.cs:line 124\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteStoredProcedure(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 188\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryPayload(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 75\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryCommand(CommandListPosition& commandListPosition, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 47\n   at SqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/Core/CommandExecutor.cs:line 45\n   at SqlConnector.SqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlCommand.cs:line 316\n   at SqlConnector.SqlCommand.ExecuteScalar() in /_/src/SqlConnector/SqlCommand.cs:line 110\n   at s3cr3tx.Pages.LoginModel.OnPostView(Login loginC) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/login.cshtml.cs:line 193','2023-05-20 03:26:52.986'),
+(26,'s3cr3tx.api.RegisterPageCS.OnGet','System.ArgumentException: Parameter \'p_sesion_last_active\' not found in the collection.\n   at SqlConnector.Core.CachedProcedure.AlignParamsWithDb(SqlParameterCollection parameterCollection) in /_/src/SqlConnector/Core/CachedProcedure.cs:line 124\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteStoredProcedure(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 188\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryPayload(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 75\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryCommand(CommandListPosition& commandListPosition, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 47\n   at SqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/Core/CommandExecutor.cs:line 45\n   at SqlConnector.SqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlCommand.cs:line 316\n   at SqlConnector.SqlCommand.ExecuteScalar() in /_/src/SqlConnector/SqlCommand.cs:line 110\n   at s3cr3tx.Pages.LoginModel.OnPostView(Login loginC) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/login.cshtml.cs:line 193','2023-05-20 03:34:47.207'),
+(27,'s3cr3tx.api.RegisterPageCS.OnGet','System.ArgumentException: Parameter \'p_sesion_last_active\' not found in the collection.\n   at SqlConnector.Core.CachedProcedure.AlignParamsWithDb(SqlParameterCollection parameterCollection) in /_/src/SqlConnector/Core/CachedProcedure.cs:line 124\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteStoredProcedure(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 188\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryPayload(ISqlCommand command, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 75\n   at SqlConnector.Core.SingleCommandPayloadCreator.WriteQueryCommand(CommandListPosition& commandListPosition, IDictionary`2 cachedProcedures, ByteBufferWriter writer, Boolean appendSemicolon) in /_/src/SqlConnector/Core/SingleCommandPayloadCreator.cs:line 47\n   at SqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/Core/CommandExecutor.cs:line 45\n   at SqlConnector.SqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlCommand.cs:line 316\n   at SqlConnector.SqlCommand.ExecuteScalar() in /_/src/SqlConnector/SqlCommand.cs:line 110\n   at s3cr3tx.Pages.LoginModel.OnPostView(Login loginC) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/login.cshtml.cs:line 193','2023-05-20 03:35:02.505'),
+(28,'s3cr3tx.api.RegisterPageCS.OnGet','SqlConnector.SqlException (0x80004005): Unknown column \'p_sesion_last_active\' in \'field list\'\n   at SqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/SqlConnector/Core/ResultSet.cs:line 43\n   at SqlConnector.SqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/SqlConnector/SqlDataReader.cs:line 130\n   at SqlConnector.SqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, ISqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlDataReader.cs:line 468\n   at SqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/Core/CommandExecutor.cs:line 56\n   at SqlConnector.SqlCommand.ExecuteScalarAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/SqlConnector/SqlCommand.cs:line 316\n   at SqlConnector.SqlCommand.ExecuteScalar() in /_/src/SqlConnector/SqlCommand.cs:line 110\n   at s3cr3tx.Pages.LoginModel.OnPostView(Login loginC) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/login.cshtml.cs:line 193','2023-05-20 03:43:03.535'),
+(29,'support@gratitech.com','False','2023-05-20 04:20:23.588'),
+(30,'support@gratitech.com','False','2023-05-20 04:20:23.627'),
+(31,'support@gratitech.com','False','2023-05-20 04:20:23.656'),
+(32,'support@gratitech.com','False','2023-05-20 04:58:13.000'),
+(33,'support@gratitech.com','False','2023-05-20 04:58:13.041'),
+(34,'support@gratitech.com','False','2023-05-20 04:58:13.074'),
+(35,'support@gratitech.com','True','2023-05-20 15:52:56.724'),
+(36,'support@gratitech.com','False','2023-05-20 16:05:51.739'),
+(37,'support@gratitech.com','False','2023-05-20 16:05:51.768'),
+(38,'support@gratitech.com','False','2023-05-20 16:05:51.789'),
+(39,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 16:54:12.157'),
+(40,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 16:55:06.363'),
+(41,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 19:31:49.165'),
+(42,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 19:43:19.271'),
+(43,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 19:43:22.176'),
+(44,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 19:44:07.802'),
+(45,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 19:48:08.191'),
+(46,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:12:06.457'),
+(47,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:13:01.880'),
+(48,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:13:03.222'),
+(49,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:29:29.506'),
+(50,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:31:09.156'),
+(51,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:33:12.655'),
+(52,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:41:07.840'),
+(53,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:41:53.516'),
+(54,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:44:25.494'),
+(55,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:48:49.083'),
+(56,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:56:29.699'),
+(57,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 20:59:57.541'),
+(58,'s3cr3tx.api.RegisterPageCS.OnPostView','System.InvalidOperationException: Headers are read-only, response has already started.\n   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()\n   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)\n   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)\n   at s3cr3tx.Pages.API_InfoModel.Download_File(String strFile, String strName) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/API_Info.cshtml.cs:line 197\n   at s3cr3tx.Pages.API_InfoModel.OnPostView(S3cr3tx _S3Cr3Tx) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/API_Info.cshtml.cs:line 316','2023-05-20 21:00:06.963'),
+(59,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 22:01:46.171'),
+(60,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 22:10:16.566'),
+(61,'Dec_Sproc','System.Security.Cryptography.CryptographicException: Object contains only the public half of a key pair. A private key must also be provided.\n   at System.Security.Cryptography.RSAImplementation.RSASecurityTransforms.Decrypt(Byte[] data, RSAEncryptionPadding padding)\n   at s3cr3tx.Controllers.uspEncDec.Dec(String email, String input) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Controllers/ValuesController.cs:line 1091','2023-05-20 22:22:04.609'),
+(62,'s3cr3tx.api.IndexCS.OnPostView','System.IndexOutOfRangeException: There is no row at position 0.\n   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)\n   at System.Data.DataRowCollection.get_Item(Int32 index)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 75','2023-05-20 22:22:04.657'),
+(63,'Dec_Sproc','System.Security.Cryptography.CryptographicException: Object contains only the public half of a key pair. A private key must also be provided.\n   at System.Security.Cryptography.RSAImplementation.RSASecurityTransforms.Decrypt(Byte[] data, RSAEncryptionPadding padding)\n   at s3cr3tx.Controllers.uspEncDec.Dec(String email, String input) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Controllers/ValuesController.cs:line 1091','2023-05-20 22:22:09.426'),
+(64,'s3cr3tx.api.RegisterPageCS.OnPostView','System.IndexOutOfRangeException: There is no row at position 0.\n   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)\n   at System.Data.DataRowCollection.get_Item(Int32 index)\n   at s3cr3tx.Pages.API_InfoModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/API_Info.cshtml.cs:line 73','2023-05-20 22:22:09.455'),
+(65,'Dec_Sproc','System.Security.Cryptography.CryptographicException: Object contains only the public half of a key pair. A private key must also be provided.\n   at System.Security.Cryptography.RSAImplementation.RSASecurityTransforms.Decrypt(Byte[] data, RSAEncryptionPadding padding)\n   at s3cr3tx.Controllers.uspEncDec.Dec(String email, String input) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Controllers/ValuesController.cs:line 1091','2023-05-20 22:22:15.410'),
+(66,'s3cr3tx.api.RegisterPageCS.OnPostView','System.IndexOutOfRangeException: There is no row at position 0.\n   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)\n   at System.Data.DataRowCollection.get_Item(Int32 index)\n   at s3cr3tx.Pages.API_InfoModel.OnPostView(S3cr3tx _S3Cr3Tx) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/API_Info.cshtml.cs:line 231','2023-05-20 22:22:15.444'),
+(67,'Dec_Sproc','System.Security.Cryptography.CryptographicException: Object contains only the public half of a key pair. A private key must also be provided.\n   at System.Security.Cryptography.RSAImplementation.RSASecurityTransforms.Decrypt(Byte[] data, RSAEncryptionPadding padding)\n   at s3cr3tx.Controllers.uspEncDec.Dec(String email, String input) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Controllers/ValuesController.cs:line 1091','2023-05-20 22:22:40.600'),
+(68,'s3cr3tx.api.IndexCS.OnPostView','System.IndexOutOfRangeException: There is no row at position 0.\n   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)\n   at System.Data.DataRowCollection.get_Item(Int32 index)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 75','2023-05-20 22:22:40.625'),
+(69,'Dec_Sproc','System.Security.Cryptography.CryptographicException: Object contains only the public half of a key pair. A private key must also be provided.\n   at System.Security.Cryptography.RSAImplementation.RSASecurityTransforms.Decrypt(Byte[] data, RSAEncryptionPadding padding)\n   at s3cr3tx.Controllers.uspEncDec.Dec(String email, String input) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Controllers/ValuesController.cs:line 1091','2023-05-20 22:22:47.612'),
+(70,'s3cr3tx.api.RegisterPageCS.OnGet','System.IndexOutOfRangeException: There is no row at position 0.\n   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)\n   at System.Data.DataRowCollection.get_Item(Int32 index)\n   at s3cr3tx.Pages.LogoutModel.OnGet() in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Logout.cshtml.cs:line 61','2023-05-20 22:22:47.639'),
+(71,'Dec_Sproc','System.Security.Cryptography.CryptographicException: Object contains only the public half of a key pair. A private key must also be provided.\n   at System.Security.Cryptography.RSAImplementation.RSASecurityTransforms.Decrypt(Byte[] data, RSAEncryptionPadding padding)\n   at s3cr3tx.Controllers.uspEncDec.Dec(String email, String input) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Controllers/ValuesController.cs:line 1091','2023-05-20 22:23:03.463'),
+(72,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 22:24:11.922'),
+(73,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 22:34:05.526'),
+(74,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 22:37:01.231'),
+(75,'patrick@gratitech.com','True','2023-05-20 22:39:02.144'),
+(76,'patrick@gratitech.com','False','2023-05-20 22:39:14.183'),
+(77,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-20 22:46:30.830'),
+(78,'s3cr3tx.api.IndexCS.OnPostView','System.Net.WebException: The remote server returned an error: (400) Bad Request.\n   at System.Net.HttpWebRequest.GetResponse()\n   at System.Net.WebClient.GetWebResponse(WebRequest request)\n   at System.Net.WebClient.DownloadBits(WebRequest request, Stream writeStream)\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at s3cr3tx.Pages.IndexModel.OnGet(S3cr3tx _S3Cr3Tx, Member member, MemberSession session) in /Users/pmk/Documents/s3cr3tx-dev-05-19-23/Pages/Index.cshtml.cs:line 156','2023-05-21 02:12:20.905');
+/*!40000 ALTER TABLE `tblLog` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-05-21  2:49:14

@@ -1,0 +1,77 @@
+﻿@page
+@model s3cr3tx.Pages.API_InfoModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "s3cretx API Info";
+}
+@section Login{
+    <partial name="_LoginPartial" />
+}
+<div class="text-center">
+    <center> <h1 class="display-4">Your s3cr3tx API Credentials are listed below</h1></center>
+        <center>
+            <table>
+                <tr>
+                    <td align="right">
+                        <label id="lblEmail">Email: </label>
+                    </td>
+                    <td>
+                        @Model.S3Cr3Tx.Email
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label id="lblToken">API Key: </label>
+                    </td>
+                    <td>
+                        <textarea>@Model.S3Cr3Tx.Token</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label id="lblAuth">Auth Code: </label>
+                    </td>
+                    <td>
+                        <textarea>@Model.S3Cr3Tx.AuthCode</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label id="lblAuth">Private Key Certificate (PEM Format): </label>
+                    </td>
+                    <td>
+                        <textarea>@Model.S3Cr3Tx.PEMpri</textarea>
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label id="lblAuth">Public Key Certificate (PEM Format): </label>
+                    </td>
+                    <td>
+                        <textarea>@Model.S3Cr3Tx.PEMpub</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label id="lblAuth">Public Key Certificate (PEM Format): </label>
+                    </td>
+                    <td>
+                        <form asp-page-handler="view" formaction="post">
+                            <label id="lblCertCode">Certificate File Password:</label><br/>
+                            <br/>
+                            <input type="password" class="form-control" id="txtCertCode" asp-for="S3Cr3Tx.passcode" />
+                            <br/>
+                            <input type="submit" id="btnSubmit" disabled="disabled" value="Download" />
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <br />
+    
+</div>
+@section sitescripts{
+    <partial name="_SiteScriptsPartial" />
+}

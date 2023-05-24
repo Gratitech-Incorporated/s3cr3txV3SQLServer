@@ -1,0 +1,125 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = s3cr3tx
+build_property.RootNamespace = s3cr3tx
+build_property.ProjectDir = /Users/pmk/Documents/s3cr3tx-dev-05-24-23/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/pmk/Documents/s3cr3tx-dev-05-24-23
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = aW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/API_Info.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQVBJX0luZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Forgot.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRm9yZ290LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Freset.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJlc2V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvbG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvcmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Shared/_ExamplesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19FeGFtcGxlc1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Shared/_LoginRegisterPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19Mb2dpblJlZ2lzdGVyUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Shared/_SiteScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19TaXRlU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/Validate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVmFsaWRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Views/Home/about.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9hYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Views/Home/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9pbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/pmk/Documents/s3cr3tx-dev-05-24-23/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
